@@ -2,6 +2,25 @@
    PORTFOLIO — Interactive Engine
    ═══════════════════════════════════════════ */
 
+// ─── Mobile Burger Menu ───
+const navBurger = document.getElementById('navBurger');
+const navLinks = document.getElementById('navLinks');
+
+if (navBurger) {
+  navBurger.addEventListener('click', () => {
+    navBurger.classList.toggle('open');
+    navLinks.classList.toggle('open');
+  });
+
+  // Close menu when a link is clicked
+  navLinks.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      navBurger.classList.remove('open');
+      navLinks.classList.remove('open');
+    });
+  });
+}
+
 // ─── Custom Cursor ───
 const cursor = document.getElementById('cursor');
 const follower = document.getElementById('cursorFollower');
