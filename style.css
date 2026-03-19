@@ -1185,11 +1185,15 @@ body.cursor-hover .cursor-follower {
 /* ═══════════ RESPONSIVE ═══════════ */
 @media (max-width: 768px) {
   .cursor, .cursor-follower { display: none; }
-  body { cursor: auto; }
+  html, body { cursor: auto; overflow-x: hidden; }
   a { cursor: pointer; }
 
-  .nav { padding: 16px 20px; }
-  .nav-burger { display: flex; }
+  .hero-shapes { display: none; }
+  .grid-bg { display: none; }
+
+  .nav { padding: 14px 16px; overflow: visible; }
+  .nav-burger { display: flex; margin-left: auto; flex-shrink: 0; }
+  .nav-indicator { display: none; }
 
   .nav-links {
     display: none;

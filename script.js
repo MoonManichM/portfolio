@@ -4,19 +4,18 @@
 
 // ─── Mobile Burger Menu ───
 const navBurger = document.getElementById('navBurger');
-const navLinks = document.getElementById('navLinks');
+const navMenu = document.getElementById('navLinks');
 
-if (navBurger) {
+if (navBurger && navMenu) {
   navBurger.addEventListener('click', () => {
     navBurger.classList.toggle('open');
-    navLinks.classList.toggle('open');
+    navMenu.classList.toggle('open');
   });
 
-  // Close menu when a link is clicked
-  navLinks.querySelectorAll('.nav-link').forEach(link => {
+  navMenu.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', () => {
       navBurger.classList.remove('open');
-      navLinks.classList.remove('open');
+      navMenu.classList.remove('open');
     });
   });
 }
@@ -280,19 +279,21 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-// ─── Magnetic Effect on Nav Links ───
-document.querySelectorAll('.nav-link, .btn').forEach(el => {
-  el.addEventListener('mousemove', (e) => {
-    const rect = el.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width / 2;
-    const y = e.clientY - rect.top - rect.height / 2;
-    el.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
-  });
+// ─── Magnetic Effect on Nav Links (desktop only) ───
+if (window.innerWidth > 768) {
+  document.querySelectorAll('.nav-link, .btn').forEach(el => {
+    el.addEventListener('mousemove', (e) => {
+      const rect = el.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      el.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+    });
 
-  el.addEventListener('mouseleave', () => {
-    el.style.transform = '';
+    el.addEventListener('mouseleave', () => {
+      el.style.transform = '';
+    });
   });
-});
+}
 
 // ─── Initial reveal for hero elements ───
 setTimeout(() => {
